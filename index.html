@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>რესტორანი კოლხა | Kolkha Restaurant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+GO:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4757;
+            --accent: #d4af37;
+            --accent-light: #f39c12;
+            --accent-glow: rgba(212, 175, 55, 0.35);
+            --bg-main: #0a0a0e;
+            --bg-card: rgba(18, 18, 26, 0.75);
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(212, 175, 55, 0.3);
+            --text-white: #ffffff;
+            --text-sub: #a0a0b0;
+            --radius-xl: 24px;
+            --radius-md: 14px;
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Fira GO', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 75%, rgba(255, 71, 87, 0.05) 0%, transparent 45%);
+        }
+
+        /* Luxury Header */
+        header {
+            background: rgba(10, 10, 14, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 40%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .phone-quick-btn {
+            background: linear-gradient(135deg, var(--accent), #aa8620);
+            color: #000;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            transition: var(--transition);
+        }
+
+        .phone-quick-btn:active {
+            transform: scale(0.95);
+        }
+
+        .admin-quick-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-white);
+            padding: 8px 14px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        /* Hero Header */
+        .hero {
+            position: relative;
+            padding: 60px 20px 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, rgba(10,10,14,0.3), var(--bg-main)),
+                        url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80') center/cover;
+        }
+
+        .hero-badge {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--border-accent);
+            color: var(--accent);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text-sub);
+            max-width: 550px;
+            margin-bottom: 30px;
+        }
+
+        .hero-call-card {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-accent);
+            padding: 16px 30px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-white);
+            font-weight: 800;
+            font-size: 1.1rem;
+            backdrop-filter: blur(15px);
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-call-card i {
+            color: var(--accent);
+            font-size: 1.4rem;
+        }
+
+        /* Container & Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 18px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header h2 span {
+            color: var(--accent);
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 22px;
+        }
+
+        .menu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-accent);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .menu-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .dish-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .dish-price {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border: 1px solid var(--border-accent);
+        }
+
+        .dish-desc {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 22px;
+            line-height: 1.5;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .order-btn {
+            flex: 1;
+            background: linear-gradient(135deg, var(--accent), #b89218);
+            color: #000;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: var(--radius-md);
+            font-weight: 800;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            transition: var(--transition);
+        }
+
+        .order-btn:active {
+            transform: scale(0.96);
+        }
+
+        .delete-btn {
+            background: rgba(255, 71, 87, 0.15);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .empty-box {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--bg-card);
+            border: 1px dashed var(--border-accent);
+            border-radius: var(--radius-xl);
+            backdrop-filter: blur(10px);
+        }
+
+        .empty-box i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .empty-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .empty-box p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* Admin Controls */
+        .admin-panel {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border-accent);
+            padding: 25px;
+            border-radius: var(--radius-xl);
+            margin-bottom: 40px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .admin-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .form-input {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+            padding: 14px;
+            border-radius: var(--radius-md);
+            color: #fff;
+            outline: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            border-color: var(--accent);
+        }
+
+        .btn-add {
+            background: var(--accent);
+            color: #000;
+            font-weight: 800;
+            border: none;
+            padding: 14px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px 20px;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-card i {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .info-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .info-card p {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        /* Modal Auth */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(15px);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-accent);
+            padding: 35px 25px;
+            border-radius: var(--radius-xl);
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        footer {
+            background: #050508;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 30px 15px;
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            margin-top: 60px;
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 4.2rem; }
+            .admin-form { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo"><i class="fa-solid fa-crown"></i> კოლხა</a>
+            <div class="nav-btns">
+                <a href="tel:568222290" class="phone-quick-btn"><i class="fa-solid fa-phone"></i> 568 22 22 90</a>
+                <a href="#" id="loginBtn" class="admin-quick-btn">ადმინი</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <span class="hero-badge"><i class="fa-solid fa-star"></i> 4.5 / 5.0 (191+ შეფასება)</span>
+        <h1>რესტორანი „კოლხა“</h1>
+        <p>ტრადიციული მეგრული და ქართული გემოები ხობში</p>
+        <a href="tel:568222290" class="hero-call-card">
+            <i class="fa-solid fa-phone-volume"></i> დარეკვა & შეკვეთა
+        </a>
+    </section>
+
+    <div class="container">
+
+        <!-- Admin Controls Panel -->
+        <div id="adminPanel" class="admin-panel">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 style="color:var(--accent);"><i class="fa-solid fa-user-shield"></i> ადმინ-პანელი</h3>
+                <button onclick="logoutAdmin()" style="background:rgba(255,255,255,0.1); color:white; border:none; padding:6px 14px; border-radius:20px; cursor:pointer;">გამოსვლა</button>
+            </div>
+            
+            <form id="addMenuForm" class="admin-form">
+                <input type="text" id="itemName" class="form-input" placeholder="კერძის დასახელება" required>
+                <input type="text" id="itemPrice" class="form-input" placeholder="ფასი (მაგ: 15.00 ₾)" required>
+                <input type="text" id="itemDesc" class="form-input" placeholder="მოკლე აღწერა" required>
+                <button type="submit" class="btn-add">კერძის დამატება</button>
+            </form>
+        </div>
+
+        <!-- Menu Section -->
+        <section id="menu">
+            <div class="section-header">
+                <h2>ჩვენი <span>მენიუ</span></h2>
+            </div>
+            <div class="menu-grid" id="menuGrid"></div>
+        </section>
+
+        <!-- Contact & Info -->
+        <section id="info" style="margin-top: 70px;">
+            <div class="section-header">
+                <h2>საკონტაქტო <span>ინფორმაცია</span></h2>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3>მისამართი</h3>
+                    <p>8W93+877, ხობი</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <h3>ტელეფონი</h3>
+                    <p>568 22 22 90</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>სამუშაო საათები</h3>
+                    <p>09:00 - 00:00 (ყოველდღე)</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-box">
+            <h3 style="text-align:center; margin-bottom:20px; color:var(--accent);">ადმინისტრირება</h3>
+            <form id="loginForm">
+                <input type="text" id="username" class="form-input" placeholder="მომხმარებელი" style="width:100%; margin-bottom:12px;" required>
+                <input type="password" id="password" class="form-input" placeholder="პაროლი" style="width:100%; margin-bottom:20px;" required>
+                <button type="submit" class="btn-add" style="width:100%;">ავტორიზაცია</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 რესტორანი „კოლხა“. ყველა უფლება დაცულია.</p>
+    </footer>
+
+    <script>
+        // Menu starts completely empty
+        let menuData = JSON.parse(localStorage.getItem('kolkha_menu_lux')) || [];
+        let isAdmin = false;
+
+        const menuGrid = document.getElementById('menuGrid');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginModal = document.getElementById('loginModal');
+        const loginForm = document.getElementById('loginForm');
+        const adminPanel = document.getElementById('adminPanel');
+        const addMenuForm = document.getElementById('addMenuForm');
+
+        function renderMenu() {
+            menuGrid.innerHTML = '';
+            
+            if (menuData.length === 0) {
+                menuGrid.innerHTML = `
+                    <div class="empty-box">
+                        <i class="fa-solid fa-utensils"></i>
+                        <h3>მენიუ ჯერ ცარიელია</h3>
+                        <p>კერძების დასამატებლად გაიარეთ ავტორიზაცია ადმინის პანელიდან.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            menuData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                card.innerHTML = `
+                    <div>
+                        <div class="card-header">
+                            <span class="dish-title">${item.name}</span>
+                            <span class="dish-price">${item.price}</span>
+                        </div>
+                        <p class="dish-desc">${item.desc}</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="tel:568222290" class="order-btn">
+                            <i class="fa-solid fa-phone"></i> ყიდვა / შეკვეთა
+                        </a>
+                        ${isAdmin ? `<button class="delete-btn" onclick="deleteItem(${item.id})"><i class="fa-solid fa-trash"></i></button>` : ''}
+                    </div>
+                `;
+                menuGrid.appendChild(card);
+            });
+        }
+
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if(!isAdmin) loginModal.style.display = 'flex';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) loginModal.style.display = 'none';
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if (user === 'admin1' && pass === 'admini67') {
+                isAdmin = true;
+                loginModal.style.display = 'none';
+                adminPanel.style.display = 'block';
+                loginBtn.innerText = 'ადმინი (აქტიური)';
+                renderMenu();
+            } else {
+                alert('არასწორი მომხმარებელი ან პაროლი!');
+            }
+        });
+
+        function logoutAdmin() {
+            isAdmin = false;
+            adminPanel.style.display = 'none';
+            loginBtn.innerText = 'ადმინი';
+            renderMenu();
+        }
+
+        addMenuForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newItem = {
+                id: Date.now(),
+                name: document.getElementById('itemName').value,
+                price: document.getElementById('itemPrice').value,
+                desc: document.getElementById('itemDesc').value
+            };
+
+            menuData.push(newItem);
+            localStorage.setItem('kolkha_menu_lux', JSON.stringify(menuData));
+            renderMenu();
+            addMenuForm.reset();
+        });
+
+        function deleteItem(id) {
+            menuData = menuData.filter(item => item.id !== id);
+            localStorage.setItem('kolkha_menu_lux', JSON.stringify(menuData));
+            renderMenu();
+        }
+
+        renderMenu();
+    </script>
+</body>
+</html>
